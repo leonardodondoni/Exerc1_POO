@@ -78,14 +78,16 @@ public class ACMEPublishing {
     }
 
     public void mostraLivrosCadastrados(){
-        System.out.println("2;" + biblioteca.livrosCadastrados());
+        System.out.println("2;" + biblioteca.livrosCadastrados()); // Porque não consigo usar .size()?
     }
 
     public void cadastrarAutor(){
         int codigo = entrada.nextInt();
         String nome = entrada.nextLine();
         entrada.nextLine();
-        int isbn = entrada.nextInt();
+        String isbn = entrada.nextLine();
+        Livro l = biblioteca.pesquisaLivro(isbn);
+
     }
 
     public void mostraAutoresCadastrados(){

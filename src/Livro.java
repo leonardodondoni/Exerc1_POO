@@ -1,15 +1,17 @@
+import java.util.ArrayList;
+
 public class Livro {
 
     private String isbn;
     private String titulo;
     private int ano;
-
-    private Autor autor;
+    private ArrayList<Autor> autores;
 
     public Livro(String isbn, String titulo, int ano){
         this.isbn = isbn;
         this.titulo = titulo;
         this.ano = ano;
+        this.autores = autores;
     }
 
     public String getIsbn() {
@@ -35,8 +37,12 @@ public class Livro {
         this.titulo = titulo;
     }
 
-    public boolean adicionaAutor(Autor autor){
+    public ArrayList<Autor> getAutores(){
+        return autores;
+    }
 
+    public boolean adicionaAutor(Autor autor){
+        return autores.add(autor);
     }
 
 }
