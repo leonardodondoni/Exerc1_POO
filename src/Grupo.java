@@ -25,4 +25,7 @@ public class Grupo {
         return null;
     }
 
+    public int autoresCadastrados() {
+        return autores.size();
+    }
 }

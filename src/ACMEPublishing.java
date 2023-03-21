@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class ACMEPublishing {
     private Scanner entrada = null;
     private Biblioteca biblioteca;
-    private Grupo autores;
+    private Grupo grupo;
 
     public ACMEPublishing() {
         entrada = new Scanner(System.in);
@@ -26,7 +26,7 @@ public class ACMEPublishing {
         entrada.useLocale(Locale.ENGLISH);
         // Implemente aqui o seu codigo adicional do construtor
         biblioteca = new Biblioteca();
-        autores = new Grupo();
+        grupo = new Grupo();
     }
 
     public void executar() {
@@ -86,6 +86,10 @@ public class ACMEPublishing {
         String nome = entrada.nextLine();
         entrada.nextLine();
         int isbn = entrada.nextInt();
+    }
+
+    public void mostraAutoresCadastrados(){
+        System.out.println("4;" + grupo.autoresCadastrados());
     }
 
 
