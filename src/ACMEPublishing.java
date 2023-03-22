@@ -10,9 +10,8 @@ import java.util.Scanner;
 
 public class ACMEPublishing {
     private Scanner entrada = null;
-    private Biblioteca biblioteca;
-    private Grupo grupo;
-
+    private Biblioteca colecaoLivros;
+    private Grupo colecaoAutores;
     public ACMEPublishing() {
         entrada = new Scanner(System.in);
         try {
@@ -25,8 +24,8 @@ public class ACMEPublishing {
         }
         entrada.useLocale(Locale.ENGLISH);
         // Implemente aqui o seu codigo adicional do construtor
-        biblioteca = new Biblioteca();
-        grupo = new Grupo();
+        colecaoLivros = new Biblioteca();
+        colecaoAutores = new Grupo();
     }
 
     public void executar() {
@@ -82,14 +81,25 @@ public class ACMEPublishing {
     }
 
     public void cadastrarAutor(){
-        int codigo = entrada.nextInt();
-        String nome = entrada.nextLine();
-        entrada.nextLine();
-        int isbn = entrada.nextInt();
+//        int codigo = entrada.nextInt();
+//        String nome = entrada.nextLine();
+//        entrada.nextLine();
+//        int isbn = entrada.nextInt();
     }
 
     public void mostraAutoresCadastrados(){
         System.out.println("4;" + grupo.autoresCadastrados());
+    }
+
+    public void adicionaLivroAoAutor() {
+
+    }
+
+    public void mostraLivrosDoAutor(){
+        int codigo = entrada.nextInt();
+        for(int i = 0; i < colecaoLivros.livrosCadastrados(); i++){
+
+        }
     }
 
 

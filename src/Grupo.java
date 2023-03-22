@@ -2,30 +2,30 @@ import java.util.ArrayList;
 
 public class Grupo {
 
-    private ArrayList<Autor> autores;
+    private ArrayList<Autor> colecaoAutores;
 
     public Grupo() {
-        autores = new ArrayList<Autor>();
+        ArrayList<Autor> colecaoAutores = new ArrayList<Autor>();
     }
 
     public boolean cadastraAutor(Autor autor){
-        for(int i = 0;i < autores.size(); i++){
-            if(autores.get(i).getCodigo() == autor.getCodigo())
+        for(int i = 0;i < colecaoAutores.size(); i++){
+            if(colecaoAutores.get(i).getCodigo() == autor.getCodigo())
                 return false;
         }
-        autores.add(autor);
+        colecaoAutores.add(autor);
         return true;
     }
 
     public Autor pesquisaAutor(int codigo){
-        for(int i = 0;i < autores.size(); i++){
-            if(autores.get(i).getCodigo() == codigo)
-                return autores.get(i);
+        for(int i = 0;i < colecaoAutores.size(); i++){
+            if(colecaoAutores.get(i).getCodigo() == codigo)
+                return colecaoAutores.get(i);
         }
         return null;
     }
 
     public int autoresCadastrados() {
-        return autores.size();
+        return colecaoAutores.size();
     }
 }
