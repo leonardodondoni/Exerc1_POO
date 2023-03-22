@@ -42,4 +42,18 @@ public class Biblioteca {
         return null;
     }
 
+    public ArrayList<Livro> pesquisaLivroAutor(Autor autor){
+        ArrayList<Livro> livrosAutor = new ArrayList<Livro>();
+        for(int i = 0;i < colecaoLivros.size(); i ++){
+            if(colecaoLivros.get(i).getAutores().stream().findAny().equals(autor)){
+                livrosAutor.add(colecaoLivros.get(i));
+            }
+        }
+        if(livrosAutor.size() > 0)
+            return livrosAutor;
+        return null;
+    }
+
 }
+
+

@@ -5,13 +5,13 @@ public class Livro {
     private String isbn;
     private String titulo;
     private int ano;
-    private Autor autor;
-    private ArrayList<Autor> autores;
+    private ArrayList<Autor> autoresDoLivro;
 
     public Livro(String isbn, String titulo, int ano){
         this.isbn = isbn;
         this.titulo = titulo;
         this.ano = ano;
+        this.autoresDoLivro = new ArrayList<Autor>();
     }
 
     public String getIsbn() {
@@ -22,16 +22,22 @@ public class Livro {
         return titulo;
     }
 
+    public ArrayList<Autor> getAutores(){
+        return autoresDoLivro;
+    }
+
+//    public Autor getAutor(){
+//        for(int i = 0;i < autoresDoLivro.size(); i++){
+//            autoresDoLivro.get(i);
+//        }
+//    }
+
     public int getAno() {
         return ano;
     }
 
-    public Autor getAutor(){
-        return autor;
-    }
-
-    public void setAutor(Autor autor){
-        this.autor = autor;
+    public void setAutores(ArrayList<Autor> autores){
+        this.autoresDoLivro = autores;
     }
 
     public void setAno(int ano) {
@@ -47,10 +53,8 @@ public class Livro {
     }
 
     public boolean adicionaAutor(Autor autor){
-        if (this.autores == null) {
-            this.autores = new ArrayList<Autor>();
-        }
-        return this.autores.add(autor);
+        autoresDoLivro.add(autor);
+        return false;
     }
 
 }

@@ -28,4 +28,5 @@ public class Grupo {
     public int autoresCadastrados() {
         return colecaoAutores.size();
     }
+
 }

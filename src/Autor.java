@@ -30,5 +30,8 @@ public class Autor {
     }
 
     public boolean adicionarLivro(Livro livro){
+        livros.add(livro);
+        return false;
     }
+
 }
