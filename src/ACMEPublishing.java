@@ -37,6 +37,7 @@ public class ACMEPublishing {
             switch (opcao) {
                 case 1:
                     cadastrarLivros();
+                    break;
                 case 2:
                     mostraLivrosCadastrados();
                     break;
@@ -63,16 +64,17 @@ public class ACMEPublishing {
 
     public void cadastrarLivros(){
         String isbn = "";
-        int num = -1;
-        do {
+        while(true) {
             isbn = entrada.nextLine();
+            boolean condition = !isbn.equals("-1");
+            if (!condition) break;
             String titulo = entrada.nextLine();
             int ano = entrada.nextInt();
             entrada.nextLine();
             Livro l = new Livro(isbn, titulo, ano);
             if (colecaoLivros.cadastraLivro(l))
                 System.out.println("1;" + l.getIsbn() + ";" + l.getTitulo() + ";" + l.getAno());
-        } while (!isbn.equals("teste")); //TODO corrigir while
+        }
     }
 
     public void mostraLivrosCadastrados(){
