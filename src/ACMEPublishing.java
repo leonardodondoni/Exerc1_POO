@@ -68,10 +68,11 @@ public class ACMEPublishing {
             isbn = entrada.nextLine();
             String titulo = entrada.nextLine();
             int ano = entrada.nextInt();
+            entrada.nextLine();
             Livro l = new Livro(isbn, titulo, ano);
             if (colecaoLivros.cadastraLivro(l))
                 System.out.println("1;" + l.getIsbn() + ";" + l.getTitulo() + ";" + l.getAno());
-        } while (!isbn.equals("teste"));
+        } while (!isbn.equals("teste")); //TODO corrigir while
     }
 
     public void mostraLivrosCadastrados(){
