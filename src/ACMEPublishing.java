@@ -72,7 +72,7 @@ public class ACMEPublishing {
     }
 
     public void mostraLivrosCadastrados(){
-        System.out.println("2;" + colecaoLivros.livrosCadastrados());
+        System.out.println("2;" + colecaoLivros.getColecaoLivros().size());
     }
 
     public void cadastrarAutor(){
@@ -87,7 +87,7 @@ public class ACMEPublishing {
     }
 
     public void mostraAutoresCadastrados(){
-        System.out.println("4;" + colecaoAutores.autoresCadastrados());
+        System.out.println("4;" + colecaoAutores.getColecaoAutores().size());
     }
 
     public void adicionaLivroAoAutor() {
@@ -125,6 +125,20 @@ public class ACMEPublishing {
     }
 
     public void mostraTitulosLivrosMaisDeUmAutor(){
+        for(int i = 0; i < colecaoLivros.getColecaoLivros().size(); i ++){
+            if(colecaoLivros.getColecaoLivros().get(i).getAutores().size() > 1){
+                System.out.println("8;" + colecaoLivros.getColecaoLivros().get(i).getTitulo());
+            }
+        }
+    }
+
+    public void mostraAutoresMaisDeUmLivro() {
+        for(int i = 0; i < colecaoAutores.getColecaoAutores().size(); i++){
+            if(colecaoAutores.getColecaoAutores().get(i).getLivros().size() > 1) {
+                System.out.println("9;" + colecaoAutores.getColecaoAutores().get(i).getNome());
+                System.out.print(colecaoAutores.getColecaoAutores().get(i).getLivros().get(i).getIsbn() + ";");
+            }
+        }
     }
 
 }

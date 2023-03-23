@@ -11,6 +11,14 @@ public class Autor {
         return codigo;
     }
 
+    public ArrayList<Livro> getLivros(){
+        return livros;
+    }
+
+    public void setLivros(ArrayList<Livro> livros) {
+        this.livros = livros;
+    }
+
     public String getNome() {
         return nome;
     }

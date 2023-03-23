@@ -8,6 +8,14 @@ public class Grupo {
         ArrayList<Autor> colecaoAutores = new ArrayList<Autor>();
     }
 
+    public ArrayList<Autor> getColecaoAutores(){
+        return colecaoAutores;
+    }
+
+    public void setColecaoAutores(ArrayList<Autor> colecaoAutores) {
+        this.colecaoAutores = colecaoAutores;
+    }
+
     public boolean cadastraAutor(Autor autor){
         for(int i = 0;i < colecaoAutores.size(); i++){
             if(colecaoAutores.get(i).getCodigo() == autor.getCodigo())
@@ -25,8 +33,5 @@ public class Grupo {
         return null;
     }
 
-    public int autoresCadastrados() {
-        return colecaoAutores.size();
-    }
 
 }

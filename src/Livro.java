@@ -26,12 +26,6 @@ public class Livro {
         return autoresDoLivro;
     }
 
-//    public Autor getAutor(){
-//        for(int i = 0;i < autoresDoLivro.size(); i++){
-//            autoresDoLivro.get(i);
-//        }
-//    }
-
     public int getAno() {
         return ano;
     }

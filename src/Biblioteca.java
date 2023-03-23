@@ -9,8 +9,12 @@ public class Biblioteca {
         this.colecaoLivros = new ArrayList<Livro>(100);
     }
 
-    public int livrosCadastrados(){
-        return colecaoLivros.size();
+    public ArrayList<Livro> getColecaoLivros(){
+        return colecaoLivros;
+    }
+
+    public void setColecaoLivros(ArrayList<Livro> colecaoLivros) {
+        this.colecaoLivros = colecaoLivros;
     }
 
     public boolean cadastraLivro(Livro livro){
