@@ -12,6 +12,7 @@ public class ACMEPublishing {
     private Scanner entrada = null;
     private Biblioteca colecaoLivros;
     private Grupo colecaoAutores;
+
     public ACMEPublishing() {
         entrada = new Scanner(System.in);
         try {
@@ -36,7 +37,6 @@ public class ACMEPublishing {
             switch (opcao) {
                 case 1:
                     cadastrarLivros();
-                    break;
                 case 2:
                     mostraLivrosCadastrados();
                     break;
@@ -58,17 +58,20 @@ public class ACMEPublishing {
                     System.out.println("Opcao invalida! Redigite.");
             }
 
-        } while (opcao != 0);
+        } while (opcao != -1);
     }
 
     public void cadastrarLivros(){
-        String isbn = entrada.nextLine();
-        String titulo = entrada.nextLine();
-        entrada.nextLine();
-        int ano = entrada.nextInt();
-        Livro l = new Livro(isbn, titulo, ano);
-        if (colecaoLivros.cadastraLivro(l))
-            System.out.println("1;" + l.getIsbn() + ";" + l.getTitulo() + ";" + l.getAno());
+        String isbn = "";
+        int num = -1;
+        do {
+            isbn = entrada.nextLine();
+            String titulo = entrada.nextLine();
+            int ano = entrada.nextInt();
+            Livro l = new Livro(isbn, titulo, ano);
+            if (colecaoLivros.cadastraLivro(l))
+                System.out.println("1;" + l.getIsbn() + ";" + l.getTitulo() + ";" + l.getAno());
+        } while (!isbn.equals("teste"));
     }
 
     public void mostraLivrosCadastrados(){
@@ -76,14 +79,17 @@ public class ACMEPublishing {
     }
 
     public void cadastrarAutor(){
-        int codigo = entrada.nextInt();
-        String nome = entrada.nextLine();
-        String isbn = entrada.nextLine();
-        if(colecaoLivros.pesquisaLivro(isbn) == null){
-            Autor a = new Autor(codigo, nome);
-            colecaoAutores.cadastraAutor(a);
-            System.out.println("3;" + a.getCodigo() + ";" + a.getNome() + ";" + isbn);
-        }
+        int codigo = 0;
+        do {
+            codigo = entrada.nextInt();
+            String nome = entrada.nextLine();
+            String isbn = entrada.nextLine();
+            if (colecaoLivros.pesquisaLivro(isbn) == null) {
+                Autor a = new Autor(codigo, nome);
+                colecaoAutores.cadastraAutor(a);
+                System.out.println("3;" + a.getCodigo() + ";" + a.getNome() + ";" + isbn);
+            }
+        } while (codigo != -1);
     }
 
     public void mostraAutoresCadastrados(){
@@ -91,14 +97,17 @@ public class ACMEPublishing {
     }
 
     public void adicionaLivroAoAutor() {
-        int codigo = entrada.nextInt();
-        String isbn = entrada.nextLine();
-        if(colecaoLivros.pesquisaLivro(isbn) != null){
-            Livro l = colecaoLivros.pesquisaLivro(isbn);
-            Autor a = colecaoAutores.pesquisaAutor(codigo);
-            a.adicionarLivro(l);
-            System.out.println("5;" + a.getCodigo() + ";" + a.getNome()+ ";" + isbn + ";" + l.getTitulo() + ";" + l.getAno());
-        }
+        int codigo = 0;
+        do {
+            codigo = entrada.nextInt();
+            String isbn = entrada.nextLine();
+            if (colecaoLivros.pesquisaLivro(isbn) != null) {
+                Livro l = colecaoLivros.pesquisaLivro(isbn);
+                Autor a = colecaoAutores.pesquisaAutor(codigo);
+                a.adicionarLivro(l);
+                System.out.println("5;" + a.getCodigo() + ";" + a.getNome() + ";" + isbn + ";" + l.getTitulo() + ";" + l.getAno());
+            }
+        } while (codigo != -1);
     }
 
     public void mostraLivrosDoAutor(){
@@ -137,6 +146,15 @@ public class ACMEPublishing {
             if(colecaoAutores.getColecaoAutores().get(i).getLivros().size() > 1) {
                 System.out.println("9;" + colecaoAutores.getColecaoAutores().get(i).getNome());
                 System.out.print(colecaoAutores.getColecaoAutores().get(i).getLivros().get(i).getIsbn() + ";");
+            }
+        }
+    }
+
+    public void mostraLivrosDoAno(){
+        int ano = entrada.nextInt();
+        for(int i = 0; i < colecaoLivros.getColecaoLivros().size(); i ++){
+            if(colecaoLivros.getColecaoLivros().get(i).getAno() == ano){
+                System.out.println("10;" + colecaoLivros.getColecaoLivros().get(i).getIsbn() + ";" +colecaoLivros.getColecaoLivros().get(i).getTitulo() + ";" +colecaoLivros.getColecaoLivros().get(i).getAno());
             }
         }
     }
