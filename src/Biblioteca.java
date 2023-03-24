@@ -13,6 +13,14 @@ public class Biblioteca {
         return colecaoLivros;
     }
 
+    public Livro getLivro() {
+        return livro;
+    }
+
+    public void setLivro(Livro livro) {
+        this.livro = livro;
+    }
+
     public void setColecaoLivros(ArrayList<Livro> colecaoLivros) {
         this.colecaoLivros = colecaoLivros;
     }
@@ -29,7 +37,7 @@ public class Biblioteca {
     public Livro pesquisaLivro(String isbn){
         for(int i = 0;i < colecaoLivros.size(); i++){
             if(colecaoLivros.get(i).getIsbn().equals(isbn))
-            return colecaoLivros.get(i);
+                return colecaoLivros.get(i);
         }
         return null;
     }

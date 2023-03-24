@@ -57,6 +57,7 @@ public class ACMEPublishing {
                     break;
                 default:
                     System.out.println("Opcao invalida! Redigite.");
+                    break;
             }
 
         } while (opcao != -1);
@@ -67,7 +68,7 @@ public class ACMEPublishing {
         while(true) {
             isbn = entrada.nextLine();
             boolean condition = !isbn.equals("-1");
-            if (!condition) break;
+            if (!condition) return;
             String titulo = entrada.nextLine();
             int ano = entrada.nextInt();
             entrada.nextLine();
@@ -83,16 +84,15 @@ public class ACMEPublishing {
 
     public void cadastrarAutor(){
         int codigo = 0;
-        do {
+        while(true) {
             codigo = entrada.nextInt();
+            if(codigo == -1) return;
+            entrada.nextLine();
             String nome = entrada.nextLine();
             String isbn = entrada.nextLine();
-            if (colecaoLivros.pesquisaLivro(isbn) == null) {
-                Autor a = new Autor(codigo, nome);
-                colecaoAutores.cadastraAutor(a);
-                System.out.println("3;" + a.getCodigo() + ";" + a.getNome() + ";" + isbn);
-            }
-        } while (codigo != -1);
+            Autor a = new Autor(codigo, nome);
+            System.out.println("3;" + a.getCodigo() + ";" + a.getNome() + ";" + isbn);
+        }
     }
 
     public void mostraAutoresCadastrados(){
@@ -101,8 +101,10 @@ public class ACMEPublishing {
 
     public void adicionaLivroAoAutor() {
         int codigo = 0;
-        do {
+        while(true) {
             codigo = entrada.nextInt();
+            if(codigo == -1) return;
+            entrada.nextLine();
             String isbn = entrada.nextLine();
             if (colecaoLivros.pesquisaLivro(isbn) != null) {
                 Livro l = colecaoLivros.pesquisaLivro(isbn);
@@ -110,7 +112,7 @@ public class ACMEPublishing {
                 a.adicionarLivro(l);
                 System.out.println("5;" + a.getCodigo() + ";" + a.getNome() + ";" + isbn + ";" + l.getTitulo() + ";" + l.getAno());
             }
-        } while (codigo != -1);
+        }
     }
 
     public void mostraLivrosDoAutor(){
