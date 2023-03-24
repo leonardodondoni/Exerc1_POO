@@ -1,0 +1,4 @@
+1;9786556901282;Estrutura de dados em Java;2021
+1;9781119851196;Concepts and semantics of programming languages 2: modular and object-oriented constructs with Ocaml, Python, C++, Ada and Java;2021
+1;9786556900216;Integracao de aplicacoes;2020
+3;222;Teucu Myadora;9781119812313213999996

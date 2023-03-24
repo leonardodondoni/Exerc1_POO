@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class ACMEPublishing {
+public class
+ACMEPublishing {
     private Scanner entrada = null;
     private Biblioteca colecaoLivros;
     private Grupo colecaoAutores;
@@ -31,8 +32,9 @@ public class ACMEPublishing {
 
     public void executar() {
         int opcao = 0;
-        do {
+        while(true) {
             opcao = entrada.nextInt();
+            if(opcao == -1) break;
             entrada.nextLine();
             switch (opcao) {
                 case 1:
@@ -53,14 +55,12 @@ public class ACMEPublishing {
                 case 6:
                     mostraLivrosDoAutor();
                     break;
-                case 7:
-                    break;
                 default:
                     System.out.println("Opcao invalida! Redigite.");
                     break;
             }
 
-        } while (opcao != -1);
+        }
     }
 
     public void cadastrarLivros(){
@@ -90,8 +90,11 @@ public class ACMEPublishing {
             entrada.nextLine();
             String nome = entrada.nextLine();
             String isbn = entrada.nextLine();
-            Autor a = new Autor(codigo, nome);
-            System.out.println("3;" + a.getCodigo() + ";" + a.getNome() + ";" + isbn);
+            if(!colecaoLivros.checaIsbnExiste(isbn)){
+                Autor a = new Autor(codigo, nome);
+                colecaoAutores.cadastraAutor(a);
+                System.out.println("3;" + a.getCodigo() + ";" + a.getNome() + ";" + isbn);
+            }
         }
     }
 

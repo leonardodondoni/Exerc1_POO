@@ -5,7 +5,7 @@ public class Grupo {
     private ArrayList<Autor> colecaoAutores;
 
     public Grupo() {
-        ArrayList<Autor> colecaoAutores = new ArrayList<Autor>();
+        this.colecaoAutores = new ArrayList<Autor>(100);
     }
 
     public ArrayList<Autor> getColecaoAutores(){
@@ -17,7 +17,7 @@ public class Grupo {
     }
 
     public boolean cadastraAutor(Autor autor){
-        for(int i = 0;i < colecaoAutores.size(); i++){
+        for(int i = 0;i < this.colecaoAutores.size(); i++){
             if(colecaoAutores.get(i).getCodigo() == autor.getCodigo())
                 return false;
         }

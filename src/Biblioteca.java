@@ -42,6 +42,15 @@ public class Biblioteca {
         return null;
     }
 
+    public boolean checaIsbnExiste(String isbn){
+        for(int i = 0;i < colecaoLivros.size();i ++){
+            if(colecaoLivros.get(i).getIsbn().equals(isbn)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public ArrayList<Livro> pesquisaLivro(int ano){
         ArrayList<Livro> livrosAno = new ArrayList<Livro>();
         for(int i = 0;i < colecaoLivros.size(); i ++){
