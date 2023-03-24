@@ -6,9 +6,14 @@ public class Autor {
     private int codigo;
     private String nome;
     private ArrayList<Livro> livros;
+    private Livro livro;
 
     public int getCodigo() {
         return codigo;
+    }
+
+    public Livro getLivro() {
+        return livro;
     }
 
     public ArrayList<Livro> getLivros(){
@@ -23,6 +28,10 @@ public class Autor {
         return nome;
     }
 
+    public void setLivro(Livro livro) {
+        this.livro = livro;
+    }
+
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
@@ -31,10 +40,11 @@ public class Autor {
         this.nome = nome;
     }
 
-    public Autor(int codigo, String nome){
+    public Autor(int codigo, String nome, Livro livro){
         this.codigo = codigo;
         this.nome = nome;
         this.livros = livros;
+        this.livro = livro;
     }
 
     public boolean adicionarLivro(Livro livro){

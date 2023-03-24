@@ -82,19 +82,23 @@ ACMEPublishing {
         System.out.println("2;" + colecaoLivros.getColecaoLivros().size());
     }
 
-    public void cadastrarAutor(){
+    public void cadastrarAutor(){ //TODO refazer o cadastrarAutor
         int codigo = 0;
         while(true) {
             codigo = entrada.nextInt();
             if(codigo == -1) return;
-            entrada.nextLine();
-            String nome = entrada.nextLine();
-            String isbn = entrada.nextLine();
-            if(!colecaoLivros.checaIsbnExiste(isbn)){
-                Autor a = new Autor(codigo, nome);
-                colecaoAutores.cadastraAutor(a);
-                System.out.println("3;" + a.getCodigo() + ";" + a.getNome() + ";" + isbn);
+            if(codigo != colecaoAutores.pesquisaAutor(codigo).getCodigo()){
+                entrada.nextLine();
+                String nome = entrada.nextLine();
+                String isbn = entrada.nextLine();
+                if(colecaoLivros.checaIsbnExiste(isbn)){
+                    Autor a = new Autor(codigo, nome, colecaoLivros.pesquisaLivro(isbn));
+                    colecaoLivros.pesquisaLivro(isbn).adicionaAutor(a);
+                    colecaoAutores.cadastraAutor(a);
+                    System.out.println("3;" + a.getCodigo() + ";" + a.getNome() + ";" + isbn);
+                }
             }
+
         }
     }
 
