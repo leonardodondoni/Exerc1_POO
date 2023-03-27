@@ -112,6 +112,7 @@ ACMEPublishing {
                Autor a = new Autor(codigo, nome, colecaoLivros.pesquisaLivro(isbn));
                Livro l = colecaoLivros.pesquisaLivro(isbn);
                l.adicionaAutor(a);
+               a.adicionarLivro(l);
                if(colecaoAutores.cadastraAutor(a))
                    System.out.println("3;" + a.getCodigo() + ";" + a.getNome() + ";" + isbn);
            }
@@ -139,11 +140,11 @@ ACMEPublishing {
         }
     }
 
-    public void mostraLivrosDoAutor(){ //TODO fix this
+    public void mostraLivrosDoAutor(){
         int codigo = entrada.nextInt();
         Autor a = colecaoAutores.pesquisaAutor(codigo);
         ArrayList<Livro> aux = a.getLivros();
-        for(int i = 0; i < colecaoAutores.getColecaoAutores().size(); i ++){
+        for(int i = 0; i < aux.size(); i ++){
             System.out.println("6;" + a.getCodigo() + ";" + a.getNome() + ";" + aux.get(i).getTitulo() + ";" + aux.get(i).getAno());
         }
     }
@@ -151,12 +152,12 @@ ACMEPublishing {
     public void mostraAutoresDoLivro(){
         String isbn = entrada.nextLine();
         Livro l = colecaoLivros.pesquisaLivro(isbn);
-        System.out.println("");
         if(l != null) {
             System.out.print("7;");
             for (int i = 0; i < l.getAutores().size(); i++) {
                 System.out.print(l.getAutores().get(i).getNome() + ";");
             }
+            System.out.println();
         }
     }
 
@@ -169,12 +170,20 @@ ACMEPublishing {
     }
 
     public void mostraAutoresMaisDeUmLivro() {
+        ArrayList<Autor> aux = new ArrayList<Autor>();
         for(int i = 0; i < colecaoAutores.getColecaoAutores().size(); i++){
-            if(colecaoAutores.getColecaoAutores().get(i).getLivros().size() > 1) {
-                System.out.println("9;" + colecaoAutores.getColecaoAutores().get(i).getNome());
-                System.out.println(colecaoAutores.getColecaoAutores().get(i).getLivros().get(i).getIsbn() + ";");
+            if(colecaoAutores.getColecaoAutores().get(i).getLivros().size() > 1){
+                aux.add(colecaoAutores.getColecaoAutores().get(i));
             }
         }
+
+        for(int i = 0; i < colecaoAutores.getColecaoAutores().size(); i++){
+            if(colecaoAutores.getColecaoAutores().get(i).getLivros().size() > 1) {
+                System.out.print("9;" + colecaoAutores.getColecaoAutores().get(i).getNome() + ";");
+                System.out.print(colecaoAutores.getColecaoAutores().get(i).getLivros().get(i).getIsbn() + ";");
+            }
+        }
+        System.out.println();
     }
 
     public void mostraLivrosDoAno(){
