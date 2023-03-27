@@ -43,8 +43,8 @@ public class Autor {
     public Autor(int codigo, String nome, Livro livro){
         this.codigo = codigo;
         this.nome = nome;
-        this.livros = livros;
         this.livro = livro;
+        this.livros = new ArrayList<Livro>(100);
     }
 
     public boolean adicionarLivro(Livro livro){

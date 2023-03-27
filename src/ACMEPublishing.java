@@ -55,6 +55,18 @@ ACMEPublishing {
                 case 6:
                     mostraLivrosDoAutor();
                     break;
+                case 7:
+                    mostraAutoresDoLivro();
+                    break;
+                case 8:
+                    mostraTitulosLivrosMaisDeUmAutor();
+                    break;
+                case 9:
+                    mostraAutoresMaisDeUmLivro();
+                    break;
+                case 10:
+                    mostraLivrosDoAno();
+                    break;
                 default:
                     System.out.println("Opcao invalida! Redigite.");
                     break;
@@ -82,22 +94,27 @@ ACMEPublishing {
         System.out.println("2;" + colecaoLivros.getColecaoLivros().size());
     }
 
-    public void cadastrarAutor(){ //TODO refazer o cadastrarAutor
+    public void cadastrarAutor(){
         int codigo = 0;
         while(true) {
-            codigo = entrada.nextInt();
-            if(codigo == -1) return;
-            if(codigo != colecaoAutores.pesquisaAutor(codigo).getCodigo()){
+           codigo = entrada.nextInt();
+           if(codigo == -1) return;
+           if(colecaoAutores.pesquisaAutor(codigo) != null){
                 entrada.nextLine();
-                String nome = entrada.nextLine();
-                String isbn = entrada.nextLine();
-                if(colecaoLivros.checaIsbnExiste(isbn)){
-                    Autor a = new Autor(codigo, nome, colecaoLivros.pesquisaLivro(isbn));
-                    colecaoLivros.pesquisaLivro(isbn).adicionaAutor(a);
-                    colecaoAutores.cadastraAutor(a);
-                    System.out.println("3;" + a.getCodigo() + ";" + a.getNome() + ";" + isbn);
-                }
-            }
+                String aux = entrada.nextLine();
+                String aux2 = entrada.nextLine();
+           }
+           entrada.nextLine();
+           String nome = entrada.nextLine();
+           String isbn = entrada.nextLine();
+           //entrada.nextLine();
+           if(colecaoLivros.pesquisaLivro(isbn) != null){
+               Autor a = new Autor(codigo, nome, colecaoLivros.pesquisaLivro(isbn));
+               Livro l = colecaoLivros.pesquisaLivro(isbn);
+               l.adicionaAutor(a);
+               if(colecaoAutores.cadastraAutor(a))
+                   System.out.println("3;" + a.getCodigo() + ";" + a.getNome() + ";" + isbn);
+           }
 
         }
     }
@@ -122,14 +139,12 @@ ACMEPublishing {
         }
     }
 
-    public void mostraLivrosDoAutor(){
+    public void mostraLivrosDoAutor(){ //TODO fix this
         int codigo = entrada.nextInt();
         Autor a = colecaoAutores.pesquisaAutor(codigo);
-        ArrayList<Livro> livrosAutor = colecaoLivros.pesquisaLivroAutor(a);
-        if(livrosAutor.size() > 0) {
-            for (int i = 0; i < livrosAutor.size(); i++) {
-                System.out.println("6;" + a.getCodigo() + ";" + a.getNome() + ";" + livrosAutor.get(i).getTitulo() + ";" + livrosAutor.get(i).getAno());
-            }
+        ArrayList<Livro> aux = a.getLivros();
+        for(int i = 0; i < colecaoAutores.getColecaoAutores().size(); i ++){
+            System.out.println("6;" + a.getCodigo() + ";" + a.getNome() + ";" + aux.get(i).getTitulo() + ";" + aux.get(i).getAno());
         }
     }
 
@@ -157,7 +172,7 @@ ACMEPublishing {
         for(int i = 0; i < colecaoAutores.getColecaoAutores().size(); i++){
             if(colecaoAutores.getColecaoAutores().get(i).getLivros().size() > 1) {
                 System.out.println("9;" + colecaoAutores.getColecaoAutores().get(i).getNome());
-                System.out.print(colecaoAutores.getColecaoAutores().get(i).getLivros().get(i).getIsbn() + ";");
+                System.out.println(colecaoAutores.getColecaoAutores().get(i).getLivros().get(i).getIsbn() + ";");
             }
         }
     }

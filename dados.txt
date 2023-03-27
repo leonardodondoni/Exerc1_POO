@@ -12,12 +12,40 @@ Object Oriented Programming: advanced topics
 Integracao de aplicacoes
 2020
 -1
+2
 3
 111
 Thiago Nascimento Rodrigues
 9786556901282
 222
-Teucu Myadora
-9781119812313213999996
+Thérèse Hardin
+9781119851196
+333
+Mathieu Jaume
+9781119851196
+444
+Francois Pessaux
+9781119851196
+222
+Marcel Trudeau
+9781119851196
+555
+Véronique Donzeau-Gouge
+9781119851196
 -1
+4
+5
+111
+9786556900216
+111
+9786556901282
+-1
+6
+222
+7
+9781119851196
+8
+9
+10
+2020
 -1
