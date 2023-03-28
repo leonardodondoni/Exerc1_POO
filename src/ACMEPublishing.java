@@ -169,21 +169,26 @@ ACMEPublishing {
         }
     }
 
-    public void mostraAutoresMaisDeUmLivro() {
+    public void mostraAutoresMaisDeUmLivro() { //TODO fix this
         ArrayList<Autor> aux = new ArrayList<Autor>();
+        ArrayList<Livro> aux2 = new ArrayList<Livro>();
         for(int i = 0; i < colecaoAutores.getColecaoAutores().size(); i++){
             if(colecaoAutores.getColecaoAutores().get(i).getLivros().size() > 1){
                 aux.add(colecaoAutores.getColecaoAutores().get(i));
             }
         }
-
-        for(int i = 0; i < colecaoAutores.getColecaoAutores().size(); i++){
-            if(colecaoAutores.getColecaoAutores().get(i).getLivros().size() > 1) {
-                System.out.print("9;" + colecaoAutores.getColecaoAutores().get(i).getNome() + ";");
-                System.out.print(colecaoAutores.getColecaoAutores().get(i).getLivros().get(i).getIsbn() + ";");
-            }
+        StringBuilder test = new StringBuilder();
+        for(int i = 0; i < aux.size(); i++){
+             test.append(aux.get(i).getLivros().get(i).getIsbn()).append(";");
         }
         System.out.println();
+//        for(int i = 0; i < colecaoAutores.getColecaoAutores().size(); i++){
+//            if(colecaoAutores.getColecaoAutores().get(i).getLivros().size() > 1) {
+//                System.out.print("9;" + colecaoAutores.getColecaoAutores().get(i).getNome() + ";");
+//                System.out.print(colecaoAutores.getColecaoAutores().get(i).getLivros().get(i).getIsbn() + ";");
+//            }
+//        }
+//        System.out.println();
     }
 
     public void mostraLivrosDoAno(){
