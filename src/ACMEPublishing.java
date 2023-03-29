@@ -31,49 +31,17 @@ ACMEPublishing {
     }
 
     public void executar() {
-        int opcao = 0;
-        while(true) {
-            opcao = entrada.nextInt();
-            if(opcao == -1) break;
-            entrada.nextLine();
-            switch (opcao) {
-                case 1:
-                    cadastrarLivros();
-                    break;
-                case 2:
-                    mostraLivrosCadastrados();
-                    break;
-                case 3:
-                    cadastrarAutor();
-                    break;
-                case 4:
-                    mostraAutoresCadastrados();
-                    break;
-                case 5:
-                    adicionaLivroAoAutor();
-                    break;
-                case 6:
-                    mostraLivrosDoAutor();
-                    break;
-                case 7:
-                    mostraAutoresDoLivro();
-                    break;
-                case 8:
-                    mostraTitulosLivrosMaisDeUmAutor();
-                    break;
-                case 9:
-                    mostraAutoresMaisDeUmLivro();
-                    break;
-                case 10:
-                    mostraLivrosDoAno();
-                    break;
-                default:
-                    System.out.println("Opcao invalida! Redigite.");
-                    break;
-            }
-
+            cadastrarLivros();
+            mostraLivrosCadastrados();
+            cadastrarAutor();
+            mostraAutoresCadastrados();
+            adicionaLivroAoAutor();
+            mostraLivrosDoAutor();
+            mostraAutoresDoLivro();
+            mostraTitulosLivrosMaisDeUmAutor();
+            mostraAutoresMaisDeUmLivro();
+            mostraLivrosDoAno();
         }
-    }
 
     public void cadastrarLivros(){
         String isbn = "";

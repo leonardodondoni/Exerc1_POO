@@ -1,4 +1,3 @@
-1
 9786556901282
 Estrutura de dados em Java
 2021
@@ -12,8 +11,6 @@ Object Oriented Programming: advanced topics
 Integracao de aplicacoes
 2020
 -1
-2
-3
 111
 Thiago Nascimento Rodrigues
 9786556901282
@@ -33,19 +30,10 @@ Marcel Trudeau
 Véronique Donzeau-Gouge
 9781119851196
 -1
-4
-5
 111
 9786556900216
 111
 9786556901282
 -1
-6
-222
-7
-9781119851196
-8
-9
-10
+444
 2021
--1
