@@ -31,16 +31,16 @@ ACMEPublishing {
     }
 
     public void executar() {
-            cadastrarLivros();
-            mostraLivrosCadastrados();
-            cadastrarAutor();
-            mostraAutoresCadastrados();
-            adicionaLivroAoAutor();
-            mostraLivrosDoAutor();
-            mostraAutoresDoLivro();
-            mostraTitulosLivrosMaisDeUmAutor();
-            mostraAutoresMaisDeUmLivro();
-            mostraLivrosDoAno();
+            cadastrarLivros(); //1
+            mostraLivrosCadastrados(); //2
+            cadastrarAutor(); //3
+            mostraAutoresCadastrados(); //4
+            adicionaLivroAoAutor(); //5
+            mostraTitulosLivrosMaisDeUmAutor(); //8
+            mostraAutoresMaisDeUmLivro(); //9
+            mostraLivrosDoAutor(); //6
+            mostraAutoresDoLivro(); //7
+            mostraLivrosDoAno(); //10
         }
 
     public void cadastrarLivros(){
@@ -67,11 +67,6 @@ ACMEPublishing {
         while(true) {
            codigo = entrada.nextInt();
            if(codigo == -1) return;
-           if(colecaoAutores.pesquisaAutor(codigo) != null){
-                entrada.nextLine();
-                String aux = entrada.nextLine();
-                String aux2 = entrada.nextLine();
-           }
            entrada.nextLine();
            String nome = entrada.nextLine();
            String isbn = entrada.nextLine();
@@ -93,9 +88,7 @@ ACMEPublishing {
     }
 
     public void adicionaLivroAoAutor() {
-        int codigo = 0;
-        while(true) {
-            codigo = entrada.nextInt();
+            int codigo = entrada.nextInt();
             if(codigo == -1) return;
             entrada.nextLine();
             String isbn = entrada.nextLine();
@@ -105,11 +98,11 @@ ACMEPublishing {
                 a.adicionarLivro(l);
                 System.out.println("5;" + a.getCodigo() + ";" + a.getNome() + ";" + isbn + ";" + l.getTitulo() + ";" + l.getAno());
             }
-        }
     }
 
     public void mostraLivrosDoAutor(){
         int codigo = entrada.nextInt();
+        entrada.nextLine();
         Autor a = colecaoAutores.pesquisaAutor(codigo);
         ArrayList<Livro> aux = a.getLivros();
         for(int i = 0; i < aux.size(); i ++){
@@ -118,6 +111,7 @@ ACMEPublishing {
     }
 
     public void mostraAutoresDoLivro(){
+        entrada.nextLine();
         String isbn = entrada.nextLine();
         Livro l = colecaoLivros.pesquisaLivro(isbn);
         if(l != null) {
@@ -132,7 +126,7 @@ ACMEPublishing {
     public void mostraTitulosLivrosMaisDeUmAutor(){
         for(int i = 0; i < colecaoLivros.getColecaoLivros().size(); i ++){
             if(colecaoLivros.getColecaoLivros().get(i).getAutores().size() > 1){
-                System.out.println("8;" + colecaoLivros.getColecaoLivros().get(i).getTitulo());
+                System.out.println("8;" + colecaoLivros.getColecaoLivros().get(i).getIsbn() + ";" + colecaoLivros.getColecaoLivros().get(i).getTitulo());
             }
         }
     }
