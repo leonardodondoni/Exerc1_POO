@@ -3,8 +3,6 @@ import java.util.ArrayList;
 public class Biblioteca {
 
     private ArrayList<Livro> colecaoLivros;
-    private Livro livro;
-
     public Biblioteca() {
         this.colecaoLivros = new ArrayList<Livro>(100);
     }
@@ -12,19 +10,6 @@ public class Biblioteca {
     public ArrayList<Livro> getColecaoLivros(){
         return colecaoLivros;
     }
-
-    public Livro getLivro() {
-        return livro;
-    }
-
-    public void setLivro(Livro livro) {
-        this.livro = livro;
-    }
-
-    public void setColecaoLivros(ArrayList<Livro> colecaoLivros) {
-        this.colecaoLivros = colecaoLivros;
-    }
-
     public boolean cadastraLivro(Livro livro){
         for(int i = 0;i < colecaoLivros.size(); i++){
             if(colecaoLivros.get(i).getIsbn().equals(livro.getIsbn()))
@@ -41,16 +26,6 @@ public class Biblioteca {
         }
         return null;
     }
-
-    public boolean checaIsbnExiste(String isbn){
-        for(int i = 0;i < colecaoLivros.size();i ++){
-            if(colecaoLivros.get(i).getIsbn().equals(isbn)){
-                return true;
-            }
-        }
-        return false;
-    }
-
     public ArrayList<Livro> pesquisaLivro(int ano){
         ArrayList<Livro> livrosAno = new ArrayList<Livro>();
         for(int i = 0;i < colecaoLivros.size(); i ++){
@@ -62,18 +37,17 @@ public class Biblioteca {
             return livrosAno;
         return null;
     }
-
-    public ArrayList<Livro> pesquisaLivroAutor(Autor autor){
-        ArrayList<Livro> livrosAutor = new ArrayList<Livro>();
-        for(int i = 0;i < colecaoLivros.size(); i ++){
-            if(colecaoLivros.get(i).getAutores().stream().findAny().equals(autor)){
-                livrosAutor.add(colecaoLivros.get(i));
-            }
-        }
-        if(livrosAutor.size() > 0)
-            return livrosAutor;
-        return null;
-    }
+//    public ArrayList<Livro> pesquisaLivroAutor(Autor autor){
+//        ArrayList<Livro> livrosAutor = new ArrayList<Livro>();
+//        for(int i = 0;i < colecaoLivros.size(); i ++){
+//            if(colecaoLivros.get(i).getAutores().stream().findAny().equals(autor)){
+//                livrosAutor.add(colecaoLivros.get(i));
+//            }
+//        }
+//        if(livrosAutor.size() > 0)
+//            return livrosAutor;
+//        return null;
+//    }
 
 }
 

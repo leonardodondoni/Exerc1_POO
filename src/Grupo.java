@@ -12,10 +12,6 @@ public class Grupo {
         return colecaoAutores;
     }
 
-    public void setColecaoAutores(ArrayList<Autor> colecaoAutores) {
-        this.colecaoAutores = colecaoAutores;
-    }
-
     public boolean cadastraAutor(Autor autor){
         for(int i = 0;i < this.colecaoAutores.size(); i++){
             if(colecaoAutores.get(i).getCodigo() == autor.getCodigo())

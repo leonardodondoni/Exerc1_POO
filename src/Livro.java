@@ -30,22 +30,6 @@ public class Livro {
         return ano;
     }
 
-    public void setAutores(ArrayList<Autor> autores){
-        this.autoresDoLivro = autores;
-    }
-
-    public void setAno(int ano) {
-        this.ano = ano;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
     public boolean adicionaAutor(Autor autor){
         autoresDoLivro.add(autor);
         return false;

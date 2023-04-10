@@ -30,7 +30,7 @@ ACMEPublishing {
         colecaoAutores = new Grupo();
     }
 
-    public void executar() {
+    public void executa() {
             cadastrarLivros(); //1
             mostraLivrosCadastrados(); //2
             cadastrarAutor(); //3
@@ -88,15 +88,17 @@ ACMEPublishing {
     }
 
     public void adicionaLivroAoAutor() {
-            int codigo = entrada.nextInt();
-            if(codigo == -1) return;
-            entrada.nextLine();
-            String isbn = entrada.nextLine();
-            if (colecaoLivros.pesquisaLivro(isbn) != null) {
-                Livro l = colecaoLivros.pesquisaLivro(isbn);
-                Autor a = colecaoAutores.pesquisaAutor(codigo);
-                a.adicionarLivro(l);
-                System.out.println("5;" + a.getCodigo() + ";" + a.getNome() + ";" + isbn + ";" + l.getTitulo() + ";" + l.getAno());
+            while(true) {
+                int codigo = entrada.nextInt();
+                if (codigo == -1) return;
+                entrada.nextLine();
+                String isbn = entrada.nextLine();
+                if (colecaoLivros.pesquisaLivro(isbn) != null) {
+                    Livro l = colecaoLivros.pesquisaLivro(isbn);
+                    Autor a = colecaoAutores.pesquisaAutor(codigo);
+                    a.adicionarLivro(l);
+                    System.out.println("5;" + a.getCodigo() + ";" + a.getNome() + ";" + isbn + ";" + l.getTitulo() + ";" + l.getAno());
+                }
             }
     }
 
@@ -111,13 +113,12 @@ ACMEPublishing {
     }
 
     public void mostraAutoresDoLivro(){
-        entrada.nextLine();
         String isbn = entrada.nextLine();
         Livro l = colecaoLivros.pesquisaLivro(isbn);
         if(l != null) {
-            System.out.print("7;");
-            for (int i = 0; i < l.getAutores().size(); i++) {
-                System.out.print(l.getAutores().get(i).getNome() + ";");
+            System.out.print("7;" + l.getIsbn() + ";");
+            for (Autor autor : l.getAutores()) {
+                System.out.print(autor.getNome() + ";");
             }
             System.out.println();
         }
